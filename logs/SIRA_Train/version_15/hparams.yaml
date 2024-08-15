@@ -1,0 +1,25 @@
+args: !!python/object:argparse.Namespace
+  batch_size: 128
+  ckpt: ''
+  description: Description
+  epochs: 100
+  epsilon: 0.65
+  epsilon_margin: 0.25
+  flow: 1
+  flowtype: cnn
+  freeze_vision: 1
+  gpus: null
+  gt_path: GroundTruth/
+  image_size: 224
+  logit_temperature: 0.07
+  lr: 0.0001
+  name: SIRA_Train
+  num_workers: 8
+  pretrain_flow: 1
+  pretrain_vision: 1
+  tau: 0.03
+  test_data_path: Test
+  testset: flickr
+  train_data_path: Train/
+  trainset: flickr
+  trimap: 1

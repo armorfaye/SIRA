@@ -3,8 +3,8 @@
 echo "SIRA Testing Script"
 name="SIRA_Test"
 testset="flickr"
-test_data_path="/path_to_testset"
-gt_path="/path_to_ground_truth"
+test_data_path="Test/"
+gt_path="GroundTruth/"
 image_size=224
 ckpt="/path_to_checkpoint"
 

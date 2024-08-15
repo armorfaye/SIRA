@@ -163,7 +163,7 @@ class SIRA_Module(LightningModule):
         self.save_hyperparameters()
 
     def training_step(self, batch, batch_idx):
-        image, flow, spec, file_id, flip = batch
+        image, flow, spec, flip = batch
 
         loss, attention = self.model(
             image.float(), flow.float(), spec.float(), flip)
@@ -174,7 +174,8 @@ class SIRA_Module(LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        image, flow, spec, file_id, _ = batch
+        print("Batch content:", batch)
+        image, flow, spec, file_id = batch
 
         loss, localization = self.model(
             image.float(), flow.float(), spec.float())
@@ -230,7 +231,7 @@ class SIRA_Module(LightningModule):
 
         return {"loss": loss, "localization": localization}
 
-    def validation_epoch_end(self, outputs):
+    def on_validation_epoch_end(self):
 
         results = []
         for i in range(21):
@@ -310,7 +311,7 @@ if __name__ == "__main__":
 
     logger = TensorBoardLogger("logs", name=args.name)
 
-    trainer = Trainer(accelerator='gpu',
+    trainer = Trainer(accelerator='cpu',
                       devices="auto",
                       strategy="ddp",
                       max_epochs=args.epochs,
@@ -319,3 +320,5 @@ if __name__ == "__main__":
                       logger=logger)
 
     trainer.fit(module, datamodule)
+    
+	

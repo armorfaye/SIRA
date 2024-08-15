@@ -5,12 +5,12 @@ name="SIRA_Train"
 description="Description"
 trainset="flickr"
 testset="flickr"
-train_data_path="/path_to_trainset"
-test_data_path="/path_to_testset"
-gt_path="/path_to_ground_truth"
+train_data_path="Train/"
+test_data_path="Test/"
+gt_path="GroundTruth/"
 image_size=224
-epochs=100
-batch_size=128
+epochs=2
+batch_size=1
 freeze_vision=1
 lr=0.0001
 
